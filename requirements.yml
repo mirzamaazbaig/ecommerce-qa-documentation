@@ -38,7 +38,7 @@ requirements:
       - What the UI shows matches what the API returns.
     risk: R5
     automated: [TC_PROD_001, TC_PROD_002, TC_PROD_003, TC_PROD_004, TC_PROD_005, TC_PROD_006, TC_API_PROD_001, TC_API_PROD_011, TC_API_PROD_012]
-    manual: [MT-005]
+    manual: []
   - id: REQ-CAT-02
     story: As a shopper I want to filter, sort and search so that I find a product quickly.
     acceptance:
@@ -135,8 +135,18 @@ requirements:
       - Automated scans find no violations on customer pages and the admin dashboard.
       - The shop can be used with a keyboard alone and announces errors to a screen reader.
     risk: R6
-    automated: [TC_A11Y_001, TC_A11Y_002, TC_A11Y_003, TC_A11Y_004, TC_A11Y_005, TC_A11Y_006, TC_A11Y_007, TC_A11Y_008, TC_A11Y_009, TC_A11Y_010, TC_A11Y_011, TC_A11Y_012, TC_A11Y_013, TC_A11Y_014]
+    automated: [TC_A11Y_001, TC_A11Y_002, TC_A11Y_003, TC_A11Y_004, TC_A11Y_005, TC_A11Y_006, TC_A11Y_007, TC_A11Y_008, TC_A11Y_009, TC_A11Y_010, TC_A11Y_011, TC_A11Y_012, TC_A11Y_013, TC_A11Y_014, TC_A11Y_015, TC_A11Y_016]
     manual: [MT-001, MT-002]
+  - id: REQ-RESP-01
+    story: As a shopper on a phone I want every feature to work at a small screen size.
+    acceptance:
+      - The menu, search, category list, price filter and sort are all reachable at 393 px wide.
+      - Buttons in the admin tables can be tapped.
+      - Interactive controls, including the menu button, have accessible names.
+    risk: R5
+    automated: [TC_PROD_007, TC_PROD_008, TC_PROD_009, TC_PROD_010, TC_ADMIN_005, TC_ADMIN_006, TC_CART_001, TC_AUTH_006, TC_A11Y_015, TC_A11Y_016]
+    manual: [MT-005]
+    note: "The automated UI tests run at phone size too (mobile-chrome project); the IDs are the same as on desktop."
   - id: REQ-PERF-01
     story: As the owner I want the API to stay fast under load.
     acceptance:
