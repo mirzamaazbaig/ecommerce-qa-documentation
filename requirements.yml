@@ -37,7 +37,7 @@ requirements:
       - A product page shows the details and reviews.
       - What the UI shows matches what the API returns.
     risk: R5
-    automated: [TC_PROD_001, TC_PROD_002, TC_PROD_003, TC_PROD_004, TC_PROD_005, TC_PROD_006, TC_API_PROD_001, TC_API_PROD_011, TC_API_PROD_012]
+    automated: [TC_PROD_001, TC_PROD_002, TC_PROD_003, TC_PROD_004, TC_PROD_005, TC_PROD_006, TC_PROD_014, TC_API_PROD_001, TC_API_PROD_011, TC_API_PROD_012]
     manual: []
   - id: REQ-CAT-02
     story: As a shopper I want to filter, sort and search so that I find a product quickly.
