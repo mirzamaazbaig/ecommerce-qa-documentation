@@ -30,7 +30,7 @@ It fails (exit code 1) when:
 - a requirement names a manual case that is missing, or that belongs to another requirement;
 - a requirement has no coverage and no note saying where it is covered.
 
-The matrix also lists automated tests that no requirement points to. Today all 139 are linked.
+The matrix also lists automated tests that no requirement points to. Today all 140 are linked.
 
 ## Honest status
 
@@ -41,4 +41,4 @@ The matrix also lists automated tests that no requirement points to. Today all 1
 ## Checks done
 
 - The traceability tool has 10 unit tests; disabling its "unknown test id" check makes two of them fail.
-- Run against the application repository, it finds 139 automated tests, links all of them, and reports no problems.
+- Run against the application repository, it finds 140 automated tests, links all of them, and reports no problems.

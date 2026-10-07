@@ -118,7 +118,7 @@ requirements:
       - The form refuses a product without a name or price.
       - I can see all customer orders with the customer and total.
     risk: R2
-    automated: [TC_ADMIN_003, TC_ADMIN_004, TC_ADMIN_005, TC_ADMIN_006, TC_ADMIN_007, TC_ADMIN_008, TC_ADMIN_009, TC_API_ADMIN_004, TC_API_ADMIN_005, TC_API_ADMIN_006, TC_API_ADMIN_007, TC_API_ADMIN_008]
+    automated: [TC_ADMIN_003, TC_ADMIN_004, TC_ADMIN_005, TC_ADMIN_006, TC_ADMIN_007, TC_ADMIN_008, TC_ADMIN_009, TC_API_ADMIN_004, TC_API_ADMIN_005, TC_API_ADMIN_006, TC_API_ADMIN_007, TC_API_ADMIN_008, TC_API_ADMIN_009]
     manual: []
   - id: REQ-SEC-01
     story: As the owner I want hostile or malformed input handled safely.
