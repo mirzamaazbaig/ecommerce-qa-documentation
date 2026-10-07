@@ -1,0 +1,147 @@
+# Requirements for the shop, written as user stories with acceptance criteria.
+# The application has no requirements document, so these were derived from the behaviour of the
+# application as built and from the defect log. Each requirement lists the automated tests that cover it
+# (IDs from the Ecom repository), the manual test cases in test-cases/manual-test-cases.csv, or an
+# `external` note when another project covers it. tools/traceability.py checks all of it.
+requirements:
+  - id: REQ-AUTH-01
+    story: As a visitor I want to register so that I have my own account.
+    acceptance:
+      - A valid email and password create a customer account and sign me in.
+      - A duplicate email is refused.
+      - Mismatched password confirmation is refused in the UI.
+      - A malformed email or a missing field is refused with a client error, never a server error.
+    risk: R3
+    automated: [TC_AUTH_001, TC_AUTH_002, TC_AUTH_003, TC_API_AUTH_001, TC_API_AUTH_002, TC_API_AUTH_003, TC_API_AUTH_009, TC_API_AUTH_010]
+    manual: [MT-011, MT-012]
+  - id: REQ-AUTH-02
+    story: As a customer I want to sign in and out so that I control access to my account.
+    acceptance:
+      - Valid credentials start a session that survives a page refresh.
+      - Wrong credentials are refused with the same message whether the email exists or not.
+      - Signing out ends the session.
+    risk: R3
+    automated: [TC_AUTH_004, TC_AUTH_005, TC_AUTH_006, TC_AUTH_007, TC_API_AUTH_005, TC_API_AUTH_006, TC_API_AUTH_007, TC_API_AUTH_008, TC_API_AUTH_011]
+    manual: [MT-010]
+  - id: REQ-AUTH-03
+    story: As the owner I want passwords stored safely so that a data leak does not expose them.
+    acceptance:
+      - Passwords are stored as bcrypt hashes and never returned by the API.
+    risk: R3
+    automated: [TC_API_AUTH_001, TC_API_AUTH_004]
+    manual: []
+  - id: REQ-CAT-01
+    story: As a shopper I want to browse products with names, prices and ratings.
+    acceptance:
+      - The home page lists products with name, price and rating.
+      - A product page shows the details and reviews.
+      - What the UI shows matches what the API returns.
+    risk: R5
+    automated: [TC_PROD_001, TC_PROD_002, TC_PROD_003, TC_PROD_004, TC_PROD_005, TC_PROD_006, TC_API_PROD_001, TC_API_PROD_011, TC_API_PROD_012]
+    manual: [MT-005]
+  - id: REQ-CAT-02
+    story: As a shopper I want to filter, sort and search so that I find a product quickly.
+    acceptance:
+      - Filtering by category shows only that category; "All Departments" shows everything.
+      - Sorting by price and by newest works.
+      - Search is case-insensitive and matches name or description; no match shows a clear message.
+      - Results can be limited and paged.
+    risk: R5
+    automated: [TC_PROD_007, TC_PROD_008, TC_PROD_009, TC_PROD_010, TC_PROD_011, TC_PROD_012, TC_PROD_013, TC_API_PROD_002, TC_API_PROD_003, TC_API_PROD_004, TC_API_PROD_005, TC_API_PROD_006, TC_API_PROD_007, TC_API_PROD_008]
+    manual: []
+  - id: REQ-CART-01
+    story: As a shopper I want a cart so that I can collect products before paying.
+    acceptance:
+      - I can add a product with a quantity from the list or the details page.
+      - The cart shows items and a correct total, and I can remove items.
+      - An empty cart says so and offers no checkout.
+      - The cart is kept when I reload the page.
+    risk: R5
+    automated: [TC_CART_001, TC_CART_002, TC_CART_003, TC_CART_004, TC_CART_005, TC_CART_006, TC_CART_007]
+    manual: [MT-004, MT-009]
+  - id: REQ-ORD-01
+    story: As a customer I want to check out so that my order is recorded.
+    acceptance:
+      - Only a signed-in customer can check out; others are sent to the login page.
+      - A successful checkout creates a pending order with its items, clears the cart and shows it in my order history.
+      - I only ever see my own orders.
+    risk: R1
+    automated: [TC_ORDER_001, TC_ORDER_002, TC_ORDER_003, TC_ORDER_004, TC_ORDER_005, TC_ORDER_006, TC_ORDER_007, TC_API_ORDER_001, TC_API_ORDER_002, TC_API_ORDER_003, TC_API_ORDER_004, TC_API_ORDER_006, TC_API_ORDER_008]
+    manual: [MT-003, MT-008]
+  - id: REQ-ORD-02
+    story: As the shop owner I want stock respected so that I never sell what I do not have.
+    acceptance:
+      - Ordering reduces stock by exactly the quantity.
+      - Ordering more than the stock is refused and changes nothing; ordering exactly the stock succeeds.
+      - A multi-item order is all or nothing.
+      - Two simultaneous orders cannot oversell the last unit.
+    risk: R1
+    automated: [TC_API_ORDER_005, TC_API_ORDER_009, TC_API_ORDER_010, TC_API_ORDER_011, TC_API_ORDER_015, TC_API_ORDER_016]
+    manual: []
+  - id: REQ-ORD-03
+    story: As the shop owner I want prices set by the server so that nobody can buy at their own price.
+    acceptance:
+      - The order total and line prices come from the catalogue, not the request.
+      - The price paid is kept even if the product price changes later.
+    risk: R1
+    automated: [TC_API_ORDER_007, TC_API_ORDER_012]
+    manual: [MT-013]
+  - id: REQ-WISH-01
+    story: As a customer I want a wishlist so that I can save products for later.
+    acceptance:
+      - I can add, view, remove and move a wishlist item to the cart.
+      - Adding twice does not duplicate; my wishlist is private.
+    risk: R2
+    automated: [TC_WISH_001, TC_WISH_002, TC_WISH_003, TC_WISH_004, TC_WISH_005, TC_WISH_006, TC_API_WISH_001, TC_API_WISH_002, TC_API_WISH_003, TC_API_WISH_004, TC_API_WISH_005, TC_API_WISH_006]
+    manual: []
+  - id: REQ-REV-01
+    story: As a customer I want to read and write reviews so that I can decide and help others.
+    acceptance:
+      - Anyone can read reviews; only a signed-in customer can post.
+      - A review needs a comment and a whole-number rating from 1 to 5 (default 5).
+      - The product's average rating and review count reflect all reviews.
+    risk: R5
+    automated: [TC_REV_001, TC_REV_002, TC_REV_003, TC_REV_004, TC_REV_005, TC_REV_006, TC_REV_007, TC_REV_008, TC_REV_009, TC_API_REV_001, TC_API_REV_002, TC_API_REV_003, TC_API_REV_004, TC_API_REV_005]
+    manual: [MT-007]
+  - id: REQ-ADM-01
+    story: As the shop owner I want admin functions restricted to administrators.
+    acceptance:
+      - Anonymous requests get 401 and customers get 403 on every admin endpoint.
+      - The dashboard sends customers and visitors away.
+    risk: R2
+    automated: [TC_ADMIN_001, TC_ADMIN_002, TC_API_ADMIN_001, TC_API_ADMIN_002, TC_API_ADMIN_003]
+    manual: []
+  - id: REQ-ADM-02
+    story: As an administrator I want to manage products and see orders.
+    acceptance:
+      - I can add, edit and delete products and the catalogue reflects it.
+      - The form refuses a product without a name or price.
+      - I can see all customer orders with the customer and total.
+    risk: R2
+    automated: [TC_ADMIN_003, TC_ADMIN_004, TC_ADMIN_005, TC_ADMIN_006, TC_ADMIN_007, TC_ADMIN_008, TC_ADMIN_009, TC_API_ADMIN_004, TC_API_ADMIN_005, TC_API_ADMIN_006, TC_API_ADMIN_007, TC_API_ADMIN_008]
+    manual: []
+  - id: REQ-SEC-01
+    story: As the owner I want hostile or malformed input handled safely.
+    acceptance:
+      - SQL metacharacters and unsupported sort columns are treated as data.
+      - Invalid ids, quantities, ratings and unknown products give 400 or 404, never 500.
+      - Stored text is displayed without running scripts.
+    risk: R4
+    automated: [TC_API_PROD_009, TC_API_PROD_010, TC_API_PROD_013, TC_API_PROD_014, TC_API_ORDER_013, TC_API_ORDER_014, TC_API_WISH_007, TC_API_WISH_008, TC_API_REV_006, TC_API_REV_007, TC_API_REV_008]
+    manual: [MT-006, MT-014]
+  - id: REQ-A11Y-01
+    story: As a user with a disability I want the shop to meet WCAG 2.1 AA.
+    acceptance:
+      - Automated scans find no violations on customer pages and the admin dashboard.
+      - The shop can be used with a keyboard alone and announces errors to a screen reader.
+    risk: R6
+    automated: [TC_A11Y_001, TC_A11Y_002, TC_A11Y_003, TC_A11Y_004, TC_A11Y_005, TC_A11Y_006, TC_A11Y_007, TC_A11Y_008, TC_A11Y_009, TC_A11Y_010, TC_A11Y_011, TC_A11Y_012, TC_A11Y_013, TC_A11Y_014]
+    manual: [MT-001, MT-002]
+  - id: REQ-PERF-01
+    story: As the owner I want the API to stay fast under load.
+    acceptance:
+      - Latency and error rate stay within the agreed thresholds under a realistic mix of traffic.
+    risk: R8
+    automated: []
+    manual: []
+    external: "Covered by the separate load test project ecommerce-performance-locust (thresholds.json, checked in CI)."
