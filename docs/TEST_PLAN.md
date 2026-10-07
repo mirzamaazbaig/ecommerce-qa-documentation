@@ -1,6 +1,6 @@
 # Test plan: E-Commerce web application
 
-Structure follows the ISTQB test plan outline. The application under test is the [Ecom shop](https://github.com/mirzamaazbaig/Ecom) (React client, Express API, PostgreSQL). One tester wrote and ran this plan; there is no team, schedule or budget to describe, so those sections are left out instead of invented.
+Structure follows the ISTQB test plan outline. The application under test is the [Ecom shop](https://github.com/mirzamaazbaig/ecommerce-test-automation) (React client, Express API, PostgreSQL). One tester wrote and ran this plan; there is no team, schedule or budget to describe, so those sections are left out instead of invented.
 
 | | |
 |---|---|
