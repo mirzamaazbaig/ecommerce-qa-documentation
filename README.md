@@ -1,5 +1,7 @@
 # E-Commerce QA Documentation: Test Plan, Requirements, Traceability
 
+[![Traceability](https://github.com/mirzamaazbaig/ecommerce-qa-documentation/actions/workflows/traceability.yml/badge.svg)](https://github.com/mirzamaazbaig/ecommerce-qa-documentation/actions/workflows/traceability.yml)
+
 The planning and analysis side of testing the [Ecom shop](https://github.com/mirzamaazbaig/Ecom): requirements with acceptance criteria, a risk-based test plan, manual and exploratory test design, bug reports, and a traceability matrix that is generated and checked by code against the real automated test suites.
 
 The automation lives in other repositories; this one shows how the testing was planned and how the pieces are tied together.
