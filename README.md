@@ -2,6 +2,8 @@
 
 [![Traceability](https://github.com/mirzamaazbaig/ecommerce-qa-documentation/actions/workflows/traceability.yml/badge.svg)](https://github.com/mirzamaazbaig/ecommerce-qa-documentation/actions/workflows/traceability.yml)
 
+![CI run: all jobs passing](docs/images/ci-run.png)
+
 The planning and analysis side of testing the [Ecom shop](https://github.com/mirzamaazbaig/ecommerce-playwright-e2e-tests): requirements with acceptance criteria, a risk-based test plan, manual and exploratory test design, bug reports, and a traceability matrix that is generated and checked by code against the real automated test suites.
 
 The automation lives in other repositories; this one shows how the testing was planned and how the pieces are tied together.
